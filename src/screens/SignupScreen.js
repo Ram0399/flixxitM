@@ -1,11 +1,13 @@
 // SignupScreen.js
 import React, { useRef } from "react";
-import { auth } from "../firebase";
+import { auth } from "../firebase"; // Import the auth object from your Firebase configuration
+import "firebase/auth";
 import "./SignupScreen.css";
 
 function SignupScreen() {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
+
   const register = (e) => {
     e.preventDefault();
 
@@ -14,23 +16,34 @@ function SignupScreen() {
         emailRef.current.value,
         passwordRef.current.value
       )
-      .then(() => {})
+      .then((userCredential) => {
+        // Handle successful registration
+        const user = userCredential.user;
+        console.log("Successfully registered:", user);
+      })
       .catch((error) => {
         alert(error.message);
       });
   };
+
   const signIn = (e) => {
     e.preventDefault();
+
     auth
       .signInWithEmailAndPassword(
         emailRef.current.value,
         passwordRef.current.value
       )
-      .then((authUser) => {
-        console.log(authUser);
+      .then((userCredential) => {
+        // Handle successful sign-in
+        const user = userCredential.user;
+        console.log("Successfully signed in:", user);
       })
-      .catch((error) => error.message);
+      .catch((error) => {
+        alert(error.message);
+      });
   };
+
   return (
     <div className="signupScreen">
       <form>
@@ -41,8 +54,8 @@ function SignupScreen() {
           Sign In
         </button>
         <h4>
-          <span className="signupScreen_grey"> New to Netflix? </span>
-          <span className="singupScreen_link" onClick={register}>
+          <span className="signupScreen_grey">New to Netflix? </span>
+          <span className="signupScreen_link" onClick={register}>
             Sign Up Now.
           </span>
         </h4>
