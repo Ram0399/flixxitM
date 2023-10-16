@@ -3,12 +3,14 @@ import axios from "./axios";
 import "./Row.css";
 
 function Row({ title, fetchUrl, isLargeRow = false }) {
+  // State to store the fetched movies
   const [movies, setMovies] = useState([]);
   const base_url = "https://image.tmdb.org/t/p/original";
 
   useEffect(() => {
     async function fetchData() {
       try {
+        // Fetch movie data from the specified URL
         const request = await axios.get(fetchUrl);
         setMovies(request.data.results);
       } catch (error) {
@@ -16,6 +18,7 @@ function Row({ title, fetchUrl, isLargeRow = false }) {
       }
     }
 
+    // Call the fetchData function when the component mounts or fetchUrl changes
     fetchData();
   }, [fetchUrl]);
 

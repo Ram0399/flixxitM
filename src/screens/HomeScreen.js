@@ -1,18 +1,20 @@
+// HomeScreen.js
+
 import React from "react";
-import Banner from "../Banner"; // Corrected import path
-import Nav from "../Nav"; // Corrected import path
-import requests from "../Requests"; // Corrected import path
-import Row from "../Row"; // Corrected import path
+import Banner from "../Banner"; // Import the Banner component
+import Nav from "../Nav"; // Import the Nav component
+import requests from "../Requests"; // Import the requests data
+import Row from "../Row"; // Import the Row component
 
 function HomeScreen() {
   return (
     <div className="homescreen">
-      {/* Nav bar */}
+      {/* Navigation bar */}
       <Nav />
 
       {/* Banner */}
       <Banner />
-      {/* row */}
+      {/* Rows of movie genres */}
       <Row
         title="NETFLIX ORIGINALS"
         fetchUrl={requests.fetchNetflixOriginals}

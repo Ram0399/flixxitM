@@ -1,4 +1,5 @@
-// src/Banner.js
+// Banner.js
+
 import React, { useEffect, useState } from "react";
 import "./Banner.css";
 import axios from "./axios";
@@ -7,6 +8,7 @@ import requests from "./Requests";
 function Banner() {
   const [movie, setMovie] = useState([]);
 
+  // Fetch a random movie from Netflix Originals
   useEffect(() => {
     async function fetchData() {
       try {
@@ -23,6 +25,7 @@ function Banner() {
     fetchData();
   }, []);
 
+  // Truncate a long string
   function truncate(string, n) {
     return string?.length > n ? string.substr(0, n - 1) + "..." : string;
   }

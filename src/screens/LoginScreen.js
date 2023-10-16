@@ -1,6 +1,10 @@
+// LoginScreen.js
+
 import React, { useState } from "react";
 import "./LoginScreen.css";
-import SignupScreen from "./SignupScreen"; // Corrected import path
+import SignupScreen from "./SignupScreen"; // Import the SignupScreen component
+// import { auth } from "../firebase";
+import "firebase/auth";
 
 function LoginScreen() {
   const [signIn, setSignIn] = useState(false);
@@ -11,7 +15,7 @@ function LoginScreen() {
         <img
           className="loginScreen_logo"
           src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png"
-          alt="bg img"
+          alt="Netflix logo"
         />
         <button onClick={() => setSignIn(true)} className="loginScreen_button">
           Sign In
@@ -19,7 +23,7 @@ function LoginScreen() {
         <div className="loginScreen_gradient"></div>
         <div className="loginScreen_body ">
           {signIn ? (
-            <SignupScreen /> // Render SignupScreen when signIn is true
+            <SignupScreen /> // Render the SignupScreen when signIn is true
           ) : (
             <>
               <h1>Unlimited movies, TV shows, and more</h1>
